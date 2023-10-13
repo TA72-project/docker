@@ -1,10 +1,12 @@
 FROM rust:latest
 
-# install vim
+# Install vim
 RUN apt-get update && apt-get install -y vim
 
+# Creates new user for "sharing" permissions
 RUN useradd user
 USER user:user
 
-# install the diesel cli
+# Install the diesel cli for postgres
 RUN cargo install diesel_cli --no-default-features --features postgres
+RUN cargo install cargo-watch
