@@ -6,6 +6,7 @@ on:
 
 env:
   IMAGE_NAME: rust_actix_diesel
+  CARGO_TERM_COLOR: always
 
 jobs:
   build:
@@ -24,4 +25,6 @@ jobs:
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
 
       - name: Publish to registry
-        run: docker push ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME:latest
+        run: |
+          REPO=$(echo ${{ github.repository_owner }} | tr '[A-Z]' '[a-z]')
+          docker push ghcr.io/$REPO/$IMAGE_NAME:latest
