@@ -27,4 +27,7 @@ jobs:
       - name: Publish to registry
         run: |
           REPO=$(echo ${{ github.repository_owner }} | tr '[A-Z]' '[a-z]')
-          docker push ghcr.io/$REPO/$IMAGE_NAME:latest
+          IMAGE_ID=ghcr.io/$REPO/$IMAGE_NAME:latest
+
+          docker tag $IMAGE_NAME $IMAGE_ID
+          docker push $IMAGE_ID
