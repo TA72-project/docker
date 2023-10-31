@@ -2,6 +2,7 @@ name: Build
 
 on:
   push:
+    paths: ["rust_actix_diesel/Dockerfile"]
     branches: ["main", "master"]
 
 env:
