@@ -1,7 +1,8 @@
 FROM rust:latest AS builder
+ARG version="Version should be provided"
 
 # Get sources
-RUN git clone https://github.com/TA72-project/backend.git /app
+RUN git clone https://github.com/TA72-project/backend.git -b "$version" /app
 WORKDIR /app
 # Build app
 RUN cargo build --release
