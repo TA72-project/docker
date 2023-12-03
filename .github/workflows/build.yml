@@ -4,6 +4,7 @@ on:
   push:
     paths: ["rust_actix_diesel/Dockerfile"]
     branches: ["main", "master"]
+  workflow_dispatch:
 
 env:
   IMAGE_NAME: rust_actix_diesel
